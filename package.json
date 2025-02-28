@@ -1,0 +1,33 @@
+{
+  "name": "red-contrib-private-addr-resolver",
+  "version": "0.0.1",
+  "description": "A Node-RED node to resolve private BLE mac-addresses using AES-CMAC",
+  "keywords": [
+    "node-red",
+    "ble",
+    "aes-cmac",
+    "private-address"
+  ],
+  "node-red": {
+    "nodes": {
+      "private-addr-resolver": "private-addr-resolver.js"
+    }
+  },
+  "dependencies": {
+    "node-aes-cmac": "^0.1.1"
+  },
+  "author": "Ayal Itzkovitz",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayali/node-red-contrib-private-addr-resolver.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ayali/node-red-contrib-private-addr-resolver/issues"
+  },
+  "homepage": "https://github.com/ayali/node-red-contrib-private-addr-resolver#readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
