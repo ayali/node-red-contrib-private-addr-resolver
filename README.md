@@ -1,26 +1,26 @@
 # node-red-contrib-private-addr-resolver
 
-A Node-RED node to resolve private Bluetooth Low Energy (BLE) mac-addresses using AES-CMAC, helping identify devices like 
+A Node-RED node to resolve private Bluetooth Low Energy (BLE) mac addresses using AES-CMAC, helping identify devices like 
 iPhones and iPads that use Resolvable Private Addresses (RPAs) as virtual mac addresses.
 
 ## Overview
 
 Bluetooth Low Energy (BLE) devices, such as iPhones, use Resolvable Private Addresses (RPAs) to enhance privacy by periodically 
-changing their mac-addresses. These RPAs are generated using an Identity Resolving Key (IRK) and can be resolved to confirm 
+changing their mac addresses. These RPAs are generated using an Identity Resolving Key (IRK) and can be resolved to confirm 
 a device’s identity. 
 
-The `node-red-contrib-private-addr-resolver` node simplifies this process in Node-RED by taking a mac-address and an IRK as inputs, 
-performing the AES-CMAC computation, and routing the mac-address to one of two outputs based on whether it matches the IRK.
+The `node-red-contrib-private-addr-resolver` node simplifies this process in Node-RED by taking a mac address and an IRK as inputs, 
+performing the AES-CMAC computation, and routing the mac address to one of two outputs based on whether it matches the IRK.
 
 This node is ideal for home automation setups, IoT projects, or any application needing to track BLE devices with 
-rotating mac-addresses, such as detecting the presence of your iPhone in a specific area.
+rotating mac addresses, such as detecting the presence of your iPhone in a specific area.
 
 ## Features
-- **Input Validation**: Accepts mac-address and IRK via `msg.payload` or node configuration.
+- **Input Validation**: Accepts mac_address and IRK via `msg.payload` or node configuration.
 - **AES-CMAC Resolution**: Uses the `node-aes-cmac` library to compute the hash and verify RPAs.
 - **Dual Outputs**: 
-  - Output 1: Matching mac-address (the mac address belongs to the device with the specified IRK)
-  - Output 2: Non-matching mac-address
+  - Output 1: Matching mac_address (the mac address belongs to the device with the specified IRK)
+  - Output 2: Non-matching mac_address
 - **Easy Integration**: Works seamlessly with BLE scanning nodes like `node-red-contrib-ble` or `node-red-contrib-noble`.
 
 ## Installation
