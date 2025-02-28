@@ -4,8 +4,8 @@
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
-        <label for="node-input-mac-address"><i class="fa fa-address-card"></i> mac-address (optional)</label>
-        <input type="text" id="node-input-mac-address" placeholder="e.g., 12:34:56:78:9A:BC">
+        <label for="node-input-mac_address"><i class="fa fa-address-card"></i> mac_address (optional)</label>
+        <input type="text" id="node-input-mac_address" placeholder="e.g., 12:34:56:78:9A:BC">
     </div>
     <div class="form-row">
         <label for="node-input-irk"><i class="fa fa-key"></i> IRK (optional)</label>
@@ -14,38 +14,37 @@
 </script>
 
 <script type="text/html" data-help-name="private-addr-resolver">
-    <p>A node to resolve private BLE mac-addresses using AES-CMAC.</p>
+    <p>A node to resolve private BLE mac addresses using AES-CMAC.</p>
     <h3>Inputs</h3>
     <dl>
-        <dt>msg.payload.mac-address or msg.mac-address</dt>
-        <dd>The BLE mac-address to resolve (e.g., "12:34:56:78:9A:BC"). Overrides config if provided.</dd>
-        <dt>msg.payload.irk or msg.irk</dt>
-        <dd>The Identity Resolving Key (hex string). Overrides config if provided.</dd>
+        <dt>msg.payload.mac_address</dt>
+        <dd>The BLE mac address to resolve (e.g., "12:34:56:78:9A:BC"). Overridden by node config if set.</dd>
+        <dt>msg.payload.irk</dt>
+        <dd>The Identity Resolving Key (hex string, e.g., "4e5420238e1562c2d64ad9f7c7f63a76"). Overridden by node config if set.</dd>
     </dl>
     <h3>Outputs</h3>
     <ol>
-        <li>Sends the mac-address if it matches the IRK (your iPhone).</li>
-        <li>Sends the mac-address if it doesn’t match (not your iPhone).</li>
+        <li>Sends the full input message if the mac address matches the IRK (your device).</li>
+        <li>Sends the full input message if it doesn’t match (not your device).</li>
     </ol>
     <h3>Details</h3>
-    <p>Uses AES-CMAC to check if a randomized BLE mac-address resolves to your device based on the IRK.</p>
+    <p>Uses AES-CMAC to check if a randomized BLE mac address resolves to your device based on the IRK. Node configuration values override message inputs.</p>
 </script>
 
 <script type="text/javascript">
     RED.nodes.registerType('private-addr-resolver', {
         category: 'function',
-        color: '#a6bbcf',
+        color: '#FFA500', // Orange
         defaults: {
             name: { value: "" },
-            'mac-address': { value: "" },
+            mac_address: { value: "" },
             irk: { value: "" }
         },
         inputs: 1,
         outputs: 2,
-        icon: "file.svg",
+        icon: "fa-search", // Search icon
         label: function() {
             return this.name || "private-addr-resolver";
         }
     });
 </script>
-
