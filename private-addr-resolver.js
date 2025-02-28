@@ -6,13 +6,13 @@ module.exports = function(RED) {
         const node = this;
 
         node.on('input', function(msg, send, done) {
-            // Get mac-address and IRK from msg.payload or config
-            const macAddress = msg.payload['mac-address'] || msg['mac-address'] || config['mac-address'];
-            const irk = msg.payload.irk || msg.irk || config.irk;
+            // Get mac_address and IRK, prioritizing node config over msg.payload
+            const macAddress = config.mac_address || msg.payload.mac_address;
+            const irk = config.irk || msg.payload.irk;
 
             // Validate inputs
             if (!macAddress || !irk) {
-                node.error("mac-address or IRK missing", msg);
+                node.error("mac_address or IRK missing", msg);
                 done();
                 return;
             }
@@ -32,22 +32,19 @@ module.exports = function(RED) {
                 // Check if hashes match
                 const isHashMatch = computedHash.equals(receivedHash);
 
-                // BUGBUG: Log the computed hash for debugging
-                node.warn("Computed Hash: " + computedHash.toString('hex').toUpperCase());
-
                 // Prepare output messages (null for unused outputs)
                 const msgOut = [null, null];
                 if (isHashMatch) {
-                    msgOut[0] = { payload: macAddress }; // Output 1: There is a match
+                    msgOut[0] = msg; // Output 1: There is a match
                 } else {
-                    msgOut[1] = { payload: macAddress }; // Output 2: No match
+                    msgOut[1] = msg; // Output 2: No match
                 }
 
                 // Send to the appropriate output
                 send(msgOut);
                 done();
             } catch (err) {
-                node.error("Error processing mac-address: " + err.message, msg);
+                node.error("Error processing mac_address: " + err.message, msg);
                 done(err);
             }
         });
