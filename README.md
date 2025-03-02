@@ -1,6 +1,6 @@
 # node-red-contrib-private-addr-resolver
 
-A Node-RED node to resolve private Bluetooth Low Energy (BLE) mac addresses using AES-CMAC, helping identify devices like 
+A Node-RED node to resolve private Bluetooth Low Energy (BLE) mac addresses, helping identify devices like 
 iPhones and iPads that use Resolvable Private Addresses (RPAs) as virtual mac addresses.
 
 ## Overview
@@ -16,9 +16,8 @@ This node is ideal for home automation setups, IoT projects, or any application 
 rotating mac addresses, such as detecting the presence of your iPhone in a specific area.
 
 ## Features
-- **Input Validation**: Accepts mac_address and IRK via `msg.payload` or node configuration.
-- **AES-CMAC Resolution**: Uses the `node-aes-cmac` library to compute the hash and verify RPAs.
-- **Dual Outputs**: 
+- **Input Validation**: Accepts mac_address and irk via `msg.payload` or node configuration.
+- **Dual Outputs**:
   - Output 1: Matching mac_address (the mac address belongs to the device with the specified IRK)
   - Output 2: Non-matching mac_address
 - **Easy Integration**: Works seamlessly with BLE scanning nodes like `node-red-contrib-ble` or `node-red-contrib-noble`.

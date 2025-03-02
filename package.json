@@ -1,12 +1,11 @@
 {
   "name": "node-red-contrib-private-addr-resolver",
-  "version": "1.0.2",
-  "description": "A Node-RED node to resolve private BLE mac-addresses using AES-CMAC",
+  "version": "1.0.3",
+  "description": "A Node-RED node to resolve Private Resolvable Address with IRK",
   "keywords": [
     "node-red",
     "ble",
-    "aes-cmac",
-    "private-address"
+    "private-resolvable-address"
   ],
   "node-red": {
     "nodes": {

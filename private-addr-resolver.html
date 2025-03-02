@@ -8,7 +8,7 @@
         <input type="text" id="node-input-mac_address" placeholder="e.g., 12:34:56:78:9A:BC">
     </div>
     <div class="form-row">
-        <label for="node-input-irk"><i class="fa fa-key"></i> IRK (optional)</label>
+        <label for="node-input-irk"><i class="fa fa-key"></i> irk (optional)</label>
         <input type="text" id="node-input-irk" placeholder="e.g., 4e5420238e1562c2d64ad9f7c7f63a76">
     </div>
 </script>
@@ -24,11 +24,11 @@
     </dl>
     <h3>Outputs</h3>
     <ol>
-        <li>Sends the full input message if the mac address matches the IRK (your device).</li>
+        <li>Sends the full input message if the mac address matches the irk (your device).</li>
         <li>Sends the full input message if it doesn’t match (not your device).</li>
     </ol>
     <h3>Details</h3>
-    <p>Uses AES-CMAC to check if a randomized BLE mac address resolves to your device based on the IRK. Node configuration values override message inputs.</p>
+    <p>Uses AES-CMAC to check if a randomized BLE mac address resolves to your device based on the irk. Node configuration values override message inputs.</p>
 </script>
 
 <script type="text/javascript">
